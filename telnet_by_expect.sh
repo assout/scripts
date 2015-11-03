@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# About.
+# expectコマンドを利用してtelnetコマンドを実行
+
 # Refs.
 # * http://futurismo.biz/archives/1272
 # * http://www.math.kobe-u.ac.jp/‾kodama/tips-expect.html
@@ -8,6 +11,8 @@
 hostname=host
 username=user
 password=pass
+
+# 引数からsshログイン先ホストを取得
 target="${*}"
 
 # expect コマンドを実行
