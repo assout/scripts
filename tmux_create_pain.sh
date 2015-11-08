@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # TODO Refine
+# TODO Window name
 
 tmux new-window -a -n "Splits"
 
