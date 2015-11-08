@@ -10,7 +10,6 @@ tmux send-keys "echo 1" C-m
 ## pane 2
 tmux split-window -h
 tmux send-keys "echo 2" C-m
-tmux send-keys "sleep 10" C-m
 
 ## pane 3
 tmux select-pane -t 0
