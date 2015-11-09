@@ -3,24 +3,27 @@
 # TODO Refine
 # TODO Window name
 
-tmux new-window -a -n "Splits"
+tmux new-window -a -n splits
+tmux select-window -t splits
 
 ## pane 1
-tmux send-keys "echo 1" C-m
+tmux send-keys -t splits "echo 1" C-m
 
 ## pane 2
-tmux split-window -h
-tmux send-keys "echo 2" C-m
+tmux split-window -h -t splits
+tmux send-keys -t splits "echo 2" C-m
 
 ## pane 3
-tmux select-pane -t 0
-tmux split-window -v
-tmux send-keys "echo 3" C-m
+tmux select-pane -l -t splits
+tmux split-window -v -t splits
+tmux send-keys -t splits "echo 3" C-m
 
 ## pane 4
-tmux select-pane -t 2
-tmux split-window -v
-tmux send-keys "echo 4" C-m
+tmux select-pane -R -t splits
+tmux split-window -v -t splits
+tmux send-keys -t splits "echo 4" C-m
 
-tmux select-pane -t 0
+## select first pane
+tmux select-pane -L -t splits
+tmux select-pane -U -t splits
 
