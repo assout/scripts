@@ -2,6 +2,7 @@
 
 # TODO Refine
 # TODO Window name
+# TODO Generalization
 
 tmux new-window -a -n splits
 tmux select-window -t splits
