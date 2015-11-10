@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/expect -f
 
 # About.
 # expectコマンドを利用してtelnetコマンドを実行
@@ -7,31 +7,27 @@
 # * http://futurismo.biz/archives/1272
 # * http://www.math.kobe-u.ac.jp/‾kodama/tips-expect.html
 
-# ログイン情報を入力
-hostname=host
-username=user
-password=pass
+# TODOs
+# * Usage
+# * 引数チェック
+# * command指定方法
 
-# 引数からsshログイン先ホストを取得
-target="${*}"
+# ログイン情報を入力
+set host [lindex $argv 0];
+set user [lindex $argv 1];
+set pass [lindex $argv 2];
 
 # expect コマンドを実行
-expect -c "
 # タイムアウト値の指定
-set timeout 20
+set timeout 5
 # spawnで新しいジョブ生成
-spawn telnet $hostname
+spawn telnet $host
 # login
 expect login:
-send \"$username\n\"
+send "$user\n"
 expect Password:
-send \"$password\n\"
-expect \"$ \"
-if {{$target} != {""}} {
-	send \"ssh $target\n\"
-	expect \"$ \"
-}
+send "$pass\n"
+expect "$ "
 # spawnジョブを通常の通信にする
 interact
-"
 
