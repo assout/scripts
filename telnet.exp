@@ -11,6 +11,7 @@
 # * Usage
 # * 引数チェック
 # * command指定方法
+# * 引数だけでなく環境変数にも対応
 
 # ログイン情報を入力
 set host [lindex $argv 0];

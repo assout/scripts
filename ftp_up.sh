@@ -2,16 +2,24 @@
 
 # TODOs
 # * 引数チェック
+# * 引数だけでなく環境変数にも対応
+# * 引数指定方法
 
 SERVER="${1}"
 USER="${2}"
 PASS="${3}"
-shift 3
-FILES="${@}"
+SRC="${4}"
+DEST="${5}"
+shift 5
+FILES="${*}"
 
 ftp -n <<END
 open ${SERVER}
 user ${USER} ${PASS}
+lcd ${SRC}
+cd ${DEST}
+binary
+prompt
 mput ${FILES}
 END
 
