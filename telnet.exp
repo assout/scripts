@@ -29,11 +29,10 @@ expect login:
 send "$user\n"
 expect Password:
 send "$pass\n"
-expect "$ "
 
 foreach command $commands {
-  send "$command\n"
   expect "$ "
+  send "$command\n"
 }
 # spawnジョブを通常の通信にする
 interact
