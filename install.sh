@@ -6,7 +6,6 @@ if [ "${OSTYPE}" = msys ] ; then
 fi
 
 cd ~/Development
-
 git clone git@github.com:assout/memolist.git
 ln -sf ~/Development/script/ ~/
 
