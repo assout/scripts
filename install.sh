@@ -1,6 +1,9 @@
 #!/bin/bash
 
-if [ "${OSTYPE}" = msys ] ; then echo "install.sh: It doesn't meet the prerequisites" >&2 && exit 1 ; fi
+if [ "${OSTYPE}" = msys ] ; then
+  echo "install.sh: It doesn't meet the prerequisites" >&2
+  exit 1
+fi
 
 cd ~/Development
 
