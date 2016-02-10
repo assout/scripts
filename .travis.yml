@@ -1,0 +1,15 @@
+# TODO: To container base. shellcheckが入れられない
+language: ruby
+cache:
+  apt: true
+  pip: true
+
+before_install:
+  - sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu/ trusty-backports restricted main universe"
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get -qq install shellcheck
+
+script:
+  - shellcheck $(find -name "*.sh")
