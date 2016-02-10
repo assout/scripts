@@ -12,4 +12,4 @@ install:
   - sudo apt-get -qq install shellcheck
 
 script:
-  - shellcheck $(find -name "*.sh")
+  - shellcheck $(find -name "snipets" -prune -o -name "*.sh")
