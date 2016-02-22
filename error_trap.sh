@@ -9,7 +9,7 @@ onerror()
   shift
 
   args=
-  for i in "$@"; do 
+  for i in "$@"; do
     args+="\"$i\" "
   done
 
