@@ -13,6 +13,19 @@
 # * command指定方法
 # * 引数だけでなく環境変数にも対応
 
+# Refs: https://www.cygwin.com/ml/cygwin/2010-05/msg00202.html
+# Refs: http://ubuntuforums.org/archive/index.php/t-865420.html
+# trap { # trap sigwinch and pass it to the child we spawned
+#   set rows [stty rows]
+#   set cols [stty columns]
+#   stty rows $rows columns $cols < $spawn_out(slave,name)
+# } WINCH
+
+# trap {
+#   # send "echo trapped!\n" < $spawn_out(slave,name)
+#   stty cols 1000 < $spawn_out(slave, name)
+# } SIGWINCH
+
 # ログイン情報を入力
 set host [lindex $argv 0];
 set user [lindex $argv 1];
@@ -24,6 +37,7 @@ set commands [lrange $argv 3 end]
 set timeout 5
 # spawnで新しいジョブ生成
 spawn telnet $host
+
 # login
 expect login:
 send "$user\n"
