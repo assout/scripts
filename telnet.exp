@@ -43,7 +43,6 @@ expect login:
 send "$user\n"
 expect Password:
 send "$pass\n"
-
 foreach command $commands {
   expect "$ "
   send "$command\n"
