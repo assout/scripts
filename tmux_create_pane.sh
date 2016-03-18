@@ -7,7 +7,7 @@
 # TODO Usage
 # TODO Args variable num
 
-tmux new-window -a -n splits
+tmux new-window -n splits
 tmux select-window -t splits
 
 ## pane 1
