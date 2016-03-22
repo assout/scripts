@@ -7,27 +7,27 @@
 # TODO Usage
 # TODO Args variable num
 
-tmux new-window -n splits
-tmux select-window -t splits
+name=""
+while getopts n: OPT ; do
+  case ${OPT} in
+    n) name=${OPTARG} ;;
+   \?) exit 1 ;;
+  esac
+done
 
-## pane 1
-tmux send-keys -t splits "${1}" C-m
+if [ -z "${name}" ] ; then
+  tmux new-window
+else
+  tmux new-window -n "${name}"
+fi
 
-## pane 2
-tmux split-window -h -t splits
-tmux send-keys -t splits "${2}" C-m
+tmux split-window -h -t '{end}.{top-left}'
+tmux split-window -v -t '{end}.{top-left}'
+tmux split-window -v -t '{end}.{top-right}'
 
-## pane 3
-tmux select-pane -l -t splits
-tmux split-window -v -t splits
-tmux send-keys -t splits "${3}" C-m
+tmux send-keys -t '{end}.{top-left}'     "${1}" C-m
+tmux send-keys -t '{end}.{top-right}'    "${2}" C-m
+tmux send-keys -t '{end}.{bottom-left}'  "${3}" C-m
+tmux send-keys -t '{end}.{bottom-right}' "${4}" C-m
 
-## pane 4
-tmux select-pane -R -t splits
-tmux split-window -v -t splits
-tmux send-keys -t splits "${4}" C-m
-
-## select first pane
-tmux select-pane -L -t splits
-tmux select-pane -U -t splits
-
+tmux select-pane -t '{end}.{top-left}'
