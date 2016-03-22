@@ -1,10 +1,12 @@
 # short optioin only
 args=""
 isFollow=""
+gValue=""
 function parseArgs() {
-  while getopts fh OPT ; do
+  while getopts fgh OPT ; do
     case $OPT in
        f) isFollow="-f"   ;;
+       g) gValue=${OPTARG} ;;
        h) return 2 ;;
       \?) return 1 ;;
     esac
