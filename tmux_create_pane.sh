@@ -6,6 +6,7 @@
 # TODO Args check
 # TODO Usage
 # TODO Args variable num
+# FIXME BUGあり ウィンドウ指定がうまくいってない(たぶん{end}がよくない)
 
 name=""
 while getopts n: OPT ; do
