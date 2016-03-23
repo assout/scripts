@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh -eu
 
 # Start profile
 # PS4='+ $(date "+%s.%N")\011 ' # seconds.nanoseconds

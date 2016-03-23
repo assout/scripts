@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/bash -ue
+
 # Refs. <http://qiita.com/kobake@github/items/8d14f42ef5f36d4b80e4>
 
 onerror()

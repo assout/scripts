@@ -1,9 +1,10 @@
-#!/bin/bash
+#!/bin/sh -ue
 
 # TODOs
 # * 引数チェック
 # * 引数だけでなく環境変数にも対応
 # * 引数指定方法
+# * FIXME: DRY to up sh
 
 SERVER="${1}"
 USER="${2}"
@@ -20,6 +21,6 @@ lcd ${SRC}
 cd ${DEST}
 binary
 prompt
-mput ${FILES}
+mget ${FILES}
 END
 

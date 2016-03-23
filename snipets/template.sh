@@ -1,10 +1,10 @@
-#!/bin/bash -ue
+#!/bin/sh -ue
 
 # Define
 CMD_NAME=$(basename "${0}")
 
 # Usage
-function usage() {
+usage() {
   echo "Usage: ${CMD_NAME} [-t] [-f file] arg1 arg2" 1>&2
 }
 
@@ -32,3 +32,4 @@ arg2="${2}"
 # Main
 echo "arg1=[${arg1}], arg2=[${arg2}], topt=[${topt}], file=[${file}]"
 exit 0
+

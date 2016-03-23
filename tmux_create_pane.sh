@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh -ue
 
 # TODO Refine
 # TODO Window name
@@ -31,3 +31,4 @@ tmux send-keys -t '{end}.{bottom-left}'  "${3}" C-m
 tmux send-keys -t '{end}.{bottom-right}' "${4}" C-m
 
 tmux select-pane -t '{end}.{top-left}'
+

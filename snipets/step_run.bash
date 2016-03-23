@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eu
 
 # 基本パターン
 basic() {
@@ -53,4 +53,3 @@ parseOptions() {
   done
 }
 
-${@}
