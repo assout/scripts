@@ -38,18 +38,18 @@ parseOptions() {
   while [ "$#" -gt 0 ] ; do
     arg="${1}" ; shift
     case "${arg}" in
-      --debug) trap 'read -p "$BASH_COMMAND"' DEBUG;;
-      --) break;;
-      --*) ;;
-      -*)
+    --debug) trap 'read -p "$BASH_COMMAND"' DEBUG;;
+    --) break;;
+    --*) ;;
+    -*)
       OPTIND=1
       while getopts "nvE" OPT "${arg}"; do
         case $OPT in
-          n) OPTS_RSYNC_OPTS="${OPTS_RSYNC_OPTS} -n" ;;
-          \?) return 1 ;;
+        n) OPTS_RSYNC_OPTS="${OPTS_RSYNC_OPTS} -n" ;;
+        \?) return 1 ;;
         esac
       done
-    esac
-  done
-}
+      esac
+    done
+  }
 

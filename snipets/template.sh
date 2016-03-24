@@ -1,22 +1,22 @@
 #!/bin/sh -ue
 
 # Define
-CMD_NAME=$(basename "${0}")
+readonly CMD_NAME=$(basename "${0}")
+readonly USAGE="\
+Usage: ${CMD_NAME} [-t] [-f FILE] ARG1 ARG2"
 
-# Usage
 usage() {
-  echo "Usage: ${CMD_NAME} [-t] [-f file] arg1 arg2" 1>&2
+  echo "${USAGE}" 1>&2
 }
 
 # Check options
 topt=FALSE
 file=""
-while getopts tf: option
-do
+while getopts tf: option; do
   case ${option} in
-    t) topt=TRUE ;;
-    f) file=${OPTARG} ;;
-    *) usage; exit 1 ;;
+  t) topt=TRUE ;;
+  f) file=${OPTARG} ;;
+  *) usage; exit 1 ;;
   esac
 done
 shift $((OPTIND - 1))

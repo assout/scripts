@@ -1,12 +1,9 @@
 #!/bin/sh -ue
 
-# TODO Refine
-# TODO Window name
 # TODO Generalization
 # TODO Args check
 # TODO Usage
 # TODO Args variable num
-# FIXME BUGあり ウィンドウ指定がうまくいってない(たぶん{end}がよくない)
 
 name=""
 while getopts n: OPT ; do
@@ -15,6 +12,7 @@ while getopts n: OPT ; do
    \?) exit 1 ;;
   esac
 done
+shift $((OPTIND - 1))
 
 if [ -z "${name}" ] ; then
   tmux new-window
@@ -26,10 +24,10 @@ tmux split-window -h -t '{end}.{top-left}'
 tmux split-window -v -t '{end}.{top-left}'
 tmux split-window -v -t '{end}.{top-right}'
 
-tmux send-keys -t '{end}.{top-left}'     "${1}" C-m
-tmux send-keys -t '{end}.{top-right}'    "${2}" C-m
-tmux send-keys -t '{end}.{bottom-left}'  "${3}" C-m
-tmux send-keys -t '{end}.{bottom-right}' "${4}" C-m
+tmux send-keys -t '{end}.{top-left}'     "${1:-}" C-m
+tmux send-keys -t '{end}.{top-right}'    "${2:-}" C-m
+tmux send-keys -t '{end}.{bottom-left}'  "${3:-}" C-m
+tmux send-keys -t '{end}.{bottom-right}' "${4:-}" C-m
 
 tmux select-pane -t '{end}.{top-left}'
 

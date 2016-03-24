@@ -10,10 +10,10 @@ g_value=""
 parse_short_option() {
   while getopts fgh OPT ; do
     case $OPT in
-       f) is_follow="-f"   ;;
-       g) g_value=${OPTARG} ;;
-       h) return 2 ;;
-      \?) return 1 ;;
+    f) is_follow="-f"   ;;
+    g) g_value=${OPTARG} ;;
+    h) return 2 ;;
+    \?) return 1 ;;
     esac
   done
   shift "$((OPTIND - 1))"
@@ -35,32 +35,32 @@ parse_long_options() {
   while [ "$#" -gt 0 ] ; do
     arg="${1}" ; shift
     case "${arg}" in
-      --delete) OPTS_RSYNC_OPTS="${OPTS_RSYNC_OPTS} --delete";;
-      --) break;;
-      --*) ;;
-      -*)
+    --delete) OPTS_RSYNC_OPTS="${OPTS_RSYNC_OPTS} --delete";;
+    --) break;;
+    --*) ;;
+    -*)
       OPTIND=1
       while getopts "c:nv" OPT "${arg}"; do
         case $OPT in
-          c) echo "${OPTARG}" ;;
-          n) OPTS_RSYNC_OPTS="${OPTS_RSYNC_OPTS} -n" ;;
-          v) OPTS_RSYNC_OPTS="${OPTS_RSYNC_OPTS} -v" ;;
-          \?) return 1 ;;
+        c) echo "${OPTARG}" ;;
+        n) OPTS_RSYNC_OPTS="${OPTS_RSYNC_OPTS} -n" ;;
+        v) OPTS_RSYNC_OPTS="${OPTS_RSYNC_OPTS} -v" ;;
+        \?) return 1 ;;
         esac
       done
-    esac
-  done
-}
-parse_long_options "${ARGS}"
+      esac
+    done
+  }
+  parse_long_options "${ARGS}"
 
-# long option 2 - 独自実装
-# Refs: http://qiita.com/b4b4r07/items/dcd6be0bb9c9185475bb
-OPTS_RSYNC_OPTS="-aI"
-OPTS_IS_QUIET=""
-OPTS_CONF_FILE=""
-parse_long_options_for() {
-  for OPT in "${@}" ; do
-    case $OPT in
+  # long option 2 - 独自実装
+  # Refs: http://qiita.com/b4b4r07/items/dcd6be0bb9c9185475bb
+  OPTS_RSYNC_OPTS="-aI"
+  OPTS_IS_QUIET=""
+  OPTS_CONF_FILE=""
+  parse_long_options_for() {
+    for OPT in "${@}" ; do
+      case $OPT in
       '--delete') OPTS_RSYNC_OPTS="${OPTS_RSYNC_OPTS} --delete" ; shift ;;
       '--debug') trap 'read -p "${LINENO}: $BASH_COMMAND"' DEBUG; shift ;;
       '-c')
@@ -74,10 +74,10 @@ parse_long_options_for() {
       '-v') OPTS_RSYNC_OPTS="${OPTS_RSYNC_OPTS} -v"; shift ;;
       '--') shift; break ;;
       -*) (echo "distribution.sh: illegal option -- ${1}"; echo "${USAGE}") 1>&2; return 1;;
-    esac
-  done
-}
-parse_long_options_for "${ARGS}"
-echo "${OPTS_CONF_FILE}"
-echo "${OPTS_IS_QUIET}"
+      esac
+    done
+  }
+  parse_long_options_for "${ARGS}"
+  echo "${OPTS_CONF_FILE}"
+  echo "${OPTS_IS_QUIET}"
 
