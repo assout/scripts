@@ -10,18 +10,18 @@
 # * 引数だけでなく環境変数にも対応
 
 
-SERVER="${1}"
-USER="${2}"
-PASS="${3}"
+SERVER="$1"
+USER="$2"
+# PASS="$3"
 shift 3
-COMMANDS=${*}
+# COMMANDS=$*
 
 # (
 # sleep 1; echo ${USER};
 # sleep 1; echo ${PASS};
 # ) | telnet ${SERVER}
 
-telnet ${SERVER} -El ${USER} </dev/tty
+telnet "${SERVER}" -El "${USER}" </dev/tty
 
 # (
 # sleep 1

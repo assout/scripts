@@ -12,4 +12,4 @@ install:
   - sudo apt-get -qq install shellcheck
 
 script:
-  - shellcheck $(find -name "*.sh" -not -path "*snipets*")
+  - shellcheck $(find -name "*.sh" -o -name "*.bash" -not -path "*snipets*")
