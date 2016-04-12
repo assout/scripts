@@ -23,7 +23,3 @@ shift 3
 
 telnet "${SERVER}" -l "${USER}" </dev/tty
 
-# (
-# sleep 1
-# echo ${PASS}
-# ) | telnet ${SERVER} -l ${USER}
