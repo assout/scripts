@@ -21,7 +21,7 @@ shift 3
 # sleep 1; echo ${PASS};
 # ) | telnet ${SERVER}
 
-telnet "${SERVER}" -El "${USER}" </dev/tty
+telnet "${SERVER}" -l "${USER}" </dev/tty
 
 # (
 # sleep 1
