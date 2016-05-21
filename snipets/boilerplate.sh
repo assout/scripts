@@ -1,4 +1,6 @@
-#!/bin/sh -ue
+#!/bin/sh
+
+set -ueC
 
 # Define
 readonly CMD_NAME=$(basename "${0}")

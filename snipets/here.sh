@@ -7,3 +7,4 @@ echo "${here}"
 echo case 2
 here=$(cd "$(dirname "${BASH_SOURCE:-$0}")"; pwd)
 echo "${here}"
+
